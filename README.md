@@ -80,20 +80,16 @@ chmod +x BACKEND/automata_sim
 
 ## API
 
-### `POST /simulate`
+### `GET /simulate`
 
-Request body (all optional except `pattern` for regex modes):
+Query parameters (all optional except `pattern` for regex modes):
 
-```jsonc
-{
-  "pattern": "A(CG|TT)*",
-  "mode": "dfa",                // auto, nfa, dfa, efa, pda
-  "mismatch_budget": 2,
-  "allow_dot_bracket": false,
-  "input_path": "datasets/dna/sample.txt",
-  "sequences": ["ACGTACGT", "..."] // used when input_path omitted
-}
-```
+- `pattern`: The regex pattern to match (e.g., `A(CG|TT)*`)
+- `mode`: Automaton mode - `auto`, `nfa`, `dfa`, `efa`, or `pda` (default: `auto`)
+- `mismatch_budget`: Integer value for mismatch budget
+- `allow_dot_bracket`: Boolean (`true`/`false`/`1`/`0`/`yes`/`no`)
+- `input_path`: Path to input file (e.g., `datasets/dna/sample.txt`)
+- `sequences`: Multiple sequences can be passed as repeated query parameters (used when `input_path` is omitted)
 
 Response (structured JSON optimized for visualization):
 
@@ -147,25 +143,24 @@ Quick check to confirm the binary is reachable.
 ### Windows (PowerShell)
 
 ```powershell
-curl -X POST http://127.0.0.1:5000/simulate `
-  -H "Content-Type: application/json" `
-  -d '{\"pattern\":\"A(CG|TT)*\",\"mode\":\"nfa\",\"input_path\":\"datasets/dna/sample.txt\"}'
+curl "http://127.0.0.1:5000/simulate?pattern=A(CG|TT)*&mode=nfa&input_path=datasets/dna/sample.txt"
 ```
 
 Or with `Invoke-RestMethod`:
 
 ```powershell
-Invoke-RestMethod -Method Post -Uri http://127.0.0.1:5000/simulate `
-  -Body (@{ pattern = "A(CG|TT)*"; mode = "dfa"; input_path = "datasets/dna/sample.txt" } | ConvertTo-Json) `
-  -ContentType "application/json"
+Invoke-RestMethod -Method Get -Uri "http://127.0.0.1:5000/simulate?pattern=A(CG|TT)*&mode=dfa&input_path=datasets/dna/sample.txt"
 ```
 
 ### macOS/Linux (bash/zsh)
 
 ```bash
-curl -X POST http://127.0.0.1:5000/simulate \
-  -H "Content-Type: application/json" \
-  -d '{"pattern":"A(CG|TT)*","mode":"nfa","input_path":"datasets/dna/sample.txt"}'
+curl "http://127.0.0.1:5000/simulate?pattern=A(CG|TT)*&mode=nfa&input_path=datasets/dna/sample.txt"
+```
+
+**Note:** For multiple sequences, use repeated query parameters:
+```bash
+curl "http://127.0.0.1:5000/simulate?pattern=A(CG|TT)*&sequences=ACGTACGT&sequences=TTTTTT"
 ```
 
 Your frontend can hit `/simulate` with user-selected parameters to get structured JSON data optimized for visualization, including parsed match positions, coverage metrics, and sequence information.
