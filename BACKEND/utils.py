@@ -16,9 +16,6 @@ def build_command(payload: dict, dataset_path: str) -> list[str]:
     if pattern:
         cmd += ["--pattern", pattern]
 
-    if payload.get("trace"):
-        cmd.append("--trace")
-
     mismatch_budget = payload.get("mismatch_budget")
     if mismatch_budget is not None:
         cmd += ["--k", str(mismatch_budget)]

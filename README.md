@@ -90,7 +90,6 @@ Request body (all optional except `pattern` for regex modes):
   "mode": "dfa",                // auto, nfa, dfa, efa, pda
   "mismatch_budget": 2,
   "allow_dot_bracket": false,
-  "trace": false,
   "input_path": "datasets/dna/sample.txt",
   "sequences": ["ACGTACGT", "..."] // used when input_path omitted
 }
