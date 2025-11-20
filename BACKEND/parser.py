@@ -50,7 +50,7 @@ def parse_stdout(stdout: str) -> dict:
     # Parse sequences
     sequence_pattern = re.compile(r"Sequence #(\d+) \(len=(\d+)\)")
     matches_pattern = re.compile(r"\s*Matches: (.+)")
-    states_visited_pattern = re.compile(r"\s*States visited: (\d+)")
+    states_visited_pattern = re.compile(r"\s*States visited: (\d+)(?:\s*\|\s*Max stack depth: (\d+))?")
 
     i = 0
     while i < len(lines):
@@ -67,6 +67,7 @@ def parse_stdout(stdout: str) -> dict:
                 "match_ranges": [],
                 "sequence_text": "",
                 "states_visited": 0,
+                "max_stack_depth": None,  # Only for PDA mode
             }
 
             # Get matches from next line (may be indented)
@@ -97,12 +98,16 @@ def parse_stdout(stdout: str) -> dict:
                     sequence_data["sequence_text"] = seq_text
 
             # Get states visited (may be indented)
+            # For PDA mode, this may also include "Max stack depth"
             i += 1
             if i < len(lines):
                 states_line = lines[i]
                 states_match = states_visited_pattern.match(states_line)
                 if states_match:
                     sequence_data["states_visited"] = int(states_match.group(1))
+                    # PDA mode includes max stack depth
+                    if states_match.group(2):
+                        sequence_data["max_stack_depth"] = int(states_match.group(2))
 
             # Add match count for this sequence
             sequence_data["match_count"] = len(sequence_data["matches"])
