@@ -1,17 +1,22 @@
+import json
 import logging
 import os
 import subprocess
 from urllib.parse import unquote
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from config import AUTOMATA_SIM_PATH, BackendConfigError, ensure_binary_available
 from logger import get_logger
 from parser import parse_stdout
-from utils import build_command, write_sequences_to_tempfile
+from utils import build_command, write_sequences_to_tempfile, create_automaton_dump_file
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"])
 logger = get_logger()
+
+
 
 
 @app.route("/simulate", methods=["GET"])
@@ -48,17 +53,27 @@ def simulate():
 
     dataset_path = payload.get("input_path")
     temp_dataset_path = None
+    automaton_dump_path = None
+    mode = payload.get("mode", "auto").lower()
+    
     if not dataset_path:
         sequences = payload.get("sequences")
         if sequences:
             temp_dataset_path = write_sequences_to_tempfile(sequences)
             dataset_path = temp_dataset_path
 
+    # Create temp file for automaton dump if the selected mode supports it
+    # (NFA, DFA, EFA, PDA). AUTO mode doesn't specify which automaton is built.
+    if mode in {"nfa", "dfa", "efa", "pda"}:
+        automaton_dump_path = create_automaton_dump_file()
+
     try:
-        cmd = build_command(payload, dataset_path)
+        cmd = build_command(payload, dataset_path, automaton_dump_path)
     except BackendConfigError as exc:
         if temp_dataset_path:
             os.unlink(temp_dataset_path)
+        if automaton_dump_path and os.path.exists(automaton_dump_path):
+            os.unlink(automaton_dump_path)
         return jsonify({"error": str(exc)}), 400
 
     # Log command when in debug mode
@@ -90,8 +105,25 @@ def simulate():
     # Parse stdout into structured JSON
     if completed.returncode == 0:
         parsed_result = parse_stdout(completed.stdout)
+        
+        # Load automaton structure from dump file if it exists (for EFA/PDA modes)
+        if automaton_dump_path and os.path.exists(automaton_dump_path):
+            try:
+                with open(automaton_dump_path, "r", encoding="utf-8") as f:
+                    automaton_data = json.load(f)
+                    parsed_result["automaton"] = automaton_data
+            except (json.JSONDecodeError, IOError) as e:
+                logger.warning(f"Failed to read automaton dump file: {e}")
+            finally:
+                # Clean up automaton dump file
+                if os.path.exists(automaton_dump_path):
+                    os.unlink(automaton_dump_path)
+        
         return jsonify(parsed_result), 200
     else:
+        # Clean up automaton dump file on error
+        if automaton_dump_path and os.path.exists(automaton_dump_path):
+            os.unlink(automaton_dump_path)
         return jsonify({"error": "Simulation failed", "stderr": completed.stderr}), 500
 
 

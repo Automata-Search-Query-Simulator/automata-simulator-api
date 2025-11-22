@@ -94,3 +94,211 @@ Sequence #1 (len=12)
 
 Runs: 1, Matches: 6, All accepted: no
 
+2025-11-20 11:22:58 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:22:58 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:22:58 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:22:58 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:24:09 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:24:09 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:24:09 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:24:09 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:26:41 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:26:41 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:26:41 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:26:41 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:28:56 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:29:02 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:29:02 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:29:02 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:29:02 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:29:10 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:29:10 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:29:10 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:29:10 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:30:13 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:30:13 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:30:13 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:30:13 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:30:57 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:30:57 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:30:57 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:30:57 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:31:51 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:31:51 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:31:51 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:31:51 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:34:25 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:34:25 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:34:25 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:34:25 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+
+2025-11-20 11:34:30 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpmlw4oa8_.txt
+2025-11-20 11:34:30 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpmlw4oa8_.txt']
+2025-11-20 11:34:30 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:34:30 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=16)
+  Matches: [2,3) [2,5) [2,7) [10,11) 
+  ["ACGTT","ACTT"]
+  States visited: 30
+
+Runs: 1, Matches: 4, All accepted: no
+
+2025-11-20 11:34:58 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-20 11:34:58 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-20 11:34:59 - automata_simulator - DEBUG - Command return code: 0
+2025-11-20 11:34:59 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 1 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=12)
+  Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
+  ACGTACGTACGT
+  States visited: 48
+
+Runs: 1, Matches: 6, All accepted: no
+

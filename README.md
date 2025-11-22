@@ -134,6 +134,65 @@ Status `200` indicates success; `500` means the simulator failed; `400` covers v
 
 **Note:** The response is parsed from stdout and structured for easy visualization. Match ranges are sorted by start position, and coverage metrics are calculated automatically.
 
+### Inline sequence examples
+
+You can skip `input_path` and send raw sequences directly as query parameters. Add the same key multiple times to submit several sequences.
+
+#### DFA example (regex)
+
+```
+GET http://127.0.0.1:5000/simulate?mode=dfa&pattern=A(CG|TT)*&sequences=ACGTACGTACGT
+```
+
+#### EFA example (with mismatch budget)
+
+```
+GET http://127.0.0.1:5000/simulate?mode=efa&pattern=ACGT&mismatch_budget=2&sequences=ACGTACGTACGT
+```
+
+#### PDA example (dot-bracket sequences)
+
+```
+GET http://127.0.0.1:5000/simulate?mode=pda&allow_dot_bracket=true&sequences=(()())&sequences=((..))
+```
+
+Each inline request returns the parsed results plus the automaton structure (states + transitions) for `nfa`, `dfa`, `efa`, and `pda` modes. Sample response:
+
+```jsonc
+{
+  "pattern": "ACGT",
+  "automaton_mode": "EFA",
+  "sequences": [
+    {
+      "sequence_number": 1,
+      "length": 12,
+      "matches": ["[0,4)", "[4,8)", "[8,12)"],
+      "sequence_text": "ACGTACGTACGT",
+      "states_visited": 36
+    }
+  ],
+  "runs": 1,
+  "matches": 3,
+  "automaton": {
+    "kind": "EFA",
+    "pattern": "ACGT",
+    "start": 0,
+    "states": [
+      {
+        "id": 0,
+        "accept": false,
+        "transitions": [
+          {"symbol": "A", "to": 3, "type": "match"},
+          {"symbol": "C", "to": 4, "type": "mismatch"}
+          // ...
+        ]
+      }
+      // ...
+    ]
+  }
+}
+```
+
 ### `GET /healthz`
 
 Quick check to confirm the binary is reachable.
