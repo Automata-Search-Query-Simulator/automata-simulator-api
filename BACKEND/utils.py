@@ -29,8 +29,9 @@ def build_command(payload: dict, dataset_path: str, automaton_dump_path: str = N
     if dataset_path:
         cmd += ["--input", dataset_path]
 
-    # Add --dump-automaton for modes that support automaton dumping so the
-    # frontend can visualize the structure (states + transitions)
+    # Add --dump-automaton flag if dump path is provided and mode supports it
+    # Note: This will work if the binary supports it, otherwise it will be ignored
+    # and the automaton data simply won't be included in the response
     if automaton_dump_path and mode in {"nfa", "dfa", "efa", "pda"}:
         cmd += ["--dump-automaton", automaton_dump_path]
 

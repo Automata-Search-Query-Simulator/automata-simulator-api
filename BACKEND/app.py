@@ -13,7 +13,9 @@ from parser import parse_stdout
 from utils import build_command, write_sequences_to_tempfile, create_automaton_dump_file
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000"])
+# Allow all origins in development; restrict in production
+# Using CORS() without arguments allows all origins by default
+CORS(app)
 logger = get_logger()
 
 
@@ -98,6 +100,30 @@ def simulate():
                 logger.debug(f"Command stdout (first 500 chars): {completed.stdout[:500]}")
             if completed.stderr:
                 logger.debug(f"Command stderr: {completed.stderr}")
+        
+        # If command failed and it's due to unsupported --dump-automaton flag, retry without it
+        if (completed.returncode != 0 and automaton_dump_path and 
+            "--dump-automaton" in " ".join(cmd) and
+            ("Unknown or incomplete argument" in completed.stderr or 
+             "unknown" in completed.stderr.lower() and "dump-automaton" in completed.stderr.lower())):
+            logger.warning("Binary doesn't support --dump-automaton flag, retrying without it")
+            # Clean up the dump file since we're not using it
+            if os.path.exists(automaton_dump_path):
+                os.unlink(automaton_dump_path)
+            # Remove --dump-automaton flag and retry
+            cmd_without_dump = [arg for arg in cmd if arg != "--dump-automaton" and arg != automaton_dump_path]
+            completed = subprocess.run(
+                cmd_without_dump,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                check=False,
+            )
+            # Clear automaton_dump_path since we're not using it
+            automaton_dump_path = None
+            if app.debug or os.environ.get("FLASK_DEBUG", "").lower() in ("true", "1", "yes"):
+                logger.debug(f"Retry command return code: {completed.returncode}")
     finally:
         if temp_dataset_path:
             os.unlink(temp_dataset_path)
@@ -106,7 +132,8 @@ def simulate():
     if completed.returncode == 0:
         parsed_result = parse_stdout(completed.stdout)
         
-        # Load automaton structure from dump file if it exists (for EFA/PDA modes)
+        # Load automaton structure from dump file if it exists
+        # Works for NFA, DFA, EFA, and PDA modes (if binary supports --dump-automaton)
         if automaton_dump_path and os.path.exists(automaton_dump_path):
             try:
                 with open(automaton_dump_path, "r", encoding="utf-8") as f:
