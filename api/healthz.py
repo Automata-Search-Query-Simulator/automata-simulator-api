@@ -2,11 +2,11 @@
 import sys
 from pathlib import Path
 from flask import Flask, jsonify
-from index import configure_cors
+from flask_cors import CORS
 
 app = Flask(__name__)
-# Configure CORS with centralized configuration
-configure_cors(app)
+# Configure CORS - allow frontend origin
+CORS(app, origins=["https://automata-simulator-web.vercel.app", "http://localhost:3000"])
 
 # Add BACKEND to path
 backend_dir = Path(__file__).resolve().parent.parent / "BACKEND"

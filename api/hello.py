@@ -1,9 +1,9 @@
 from flask import Flask, jsonify
-from index import configure_cors
+from flask_cors import CORS
 
 app = Flask(__name__)
-# Configure CORS with centralized configuration
-configure_cors(app)
+# Configure CORS - allow frontend origin
+CORS(app, origins=["https://automata-simulator-web.vercel.app", "http://localhost:3000"])
 
 @app.route('/')
 @app.route('/api/hello')

@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 # Add BACKEND to path so we can import from it
 backend_dir = Path(__file__).resolve().parent.parent / "BACKEND"
@@ -20,11 +21,10 @@ from config import AUTOMATA_SIM_PATH, BackendConfigError, ensure_binary_availabl
 from logger import get_logger
 from parser import parse_stdout
 from utils import build_command, write_sequences_to_tempfile, create_automaton_dump_file
-from index import configure_cors
 
 app = Flask(__name__)
-# Configure CORS with centralized configuration
-configure_cors(app)
+# Configure CORS - allow frontend origin
+CORS(app, origins=["https://automata-simulator-web.vercel.app", "http://localhost:3000"])
 logger = get_logger()
 
 @app.route('/', methods=["GET"])
