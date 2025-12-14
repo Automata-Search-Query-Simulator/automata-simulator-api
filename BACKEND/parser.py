@@ -69,12 +69,14 @@ def parse_stdout(stdout: str) -> dict:
                 "sequence_text": "",
                 "states_visited": 0,
                 "max_stack_depth": None,  # Only for PDA mode
-                # RNA-specific fields
+                # RNA/PDA-specific fields
                 "rna_sequence": None,
                 "dot_bracket": None,
                 "rna_valid_bases": None,
                 "rna_checks": [],
                 "rna_result": None,
+                "pda_messages": [],
+                "is_rna_mode": False,
             }
 
             # Look ahead for RNA-specific format
@@ -89,6 +91,7 @@ def parse_stdout(stdout: str) -> dict:
             # Look for "Sequence:" in the current or next few lines
             if i < len(lines) and "Sequence:" in lines[i]:
                 is_rna_mode = True
+                sequence_data["is_rna_mode"] = True
                 # Extract RNA sequence
                 seq_line = lines[i].strip()
                 if "Sequence:" in seq_line:
@@ -104,31 +107,52 @@ def parse_stdout(stdout: str) -> dict:
                 # Skip empty lines
                 while i < len(lines) and not lines[i].strip():
                     i += 1
-                
-                # Check for RNA base validation
-                if i < len(lines) and "Valid RNA Bases" in lines[i]:
-                    sequence_data["rna_valid_bases"] = "[OK]" in lines[i] or "OK" in lines[i]
+
+                # Gather RNA/PDA validation block lines until we hit the next sequence,
+                # summary line, or automaton stats.
+                validation_lines = []
+                rewind_for_next_sequence = False
+                while i < len(lines):
+                    candidate_raw = lines[i]
+                    candidate = candidate_raw.strip()
+                    if not candidate:
+                        i += 1
+                        continue
+                    if candidate.startswith("Sequence #"):
+                        rewind_for_next_sequence = True
+                        break
+                    if candidate.startswith("Runs:"):
+                        break
+                    if matches_pattern.match(candidate_raw) or candidate.startswith("Matches:") or candidate.startswith("No matches found.") or candidate.startswith("States visited:"):
+                        break
+                    validation_lines.append(candidate)
                     i += 1
-                
-                # Parse RNA checks
-                if i < len(lines) and "Check:" in lines[i]:
-                    i += 1  # Skip "Check:" line
-                    # Read all check lines until we hit "-> Result:" or another section
-                    while i < len(lines):
-                        check_line = lines[i].strip()
-                        if check_line.startswith("- "):
-                            # Parse check line (e.g., "- 5th nucleotide G <-> 8th nucleotide C -> valid? [OK]")
-                            sequence_data["rna_checks"].append(check_line[2:])  # Remove "- " prefix
-                            i += 1
-                        elif "-> Result:" in check_line:
-                            # Parse result
-                            result_match = rna_result_pattern.match(check_line)
-                            if result_match:
-                                sequence_data["rna_result"] = result_match.group(1)
-                            i += 1
-                            break
-                        else:
-                            break
+
+                j = 0
+                while j < len(validation_lines):
+                    line = validation_lines[j]
+                    if "Valid RNA Bases" in line:
+                        sequence_data["rna_valid_bases"] = "[OK]" in line or "OK" in line
+                        j += 1
+                        continue
+                    if line.startswith("Check:"):
+                        j += 1
+                        while j < len(validation_lines) and validation_lines[j].startswith("- "):
+                            sequence_data["rna_checks"].append(validation_lines[j][2:])
+                            j += 1
+                        continue
+                    if line.startswith("-> Result:"):
+                        result_match = rna_result_pattern.match(line)
+                        if result_match:
+                            sequence_data["rna_result"] = result_match.group(1)
+                        j += 1
+                        continue
+                    # Capture additional PDA-specific validation messages (length mismatch, etc.)
+                    sequence_data["pda_messages"].append(line)
+                    j += 1
+
+                if rewind_for_next_sequence:
+                    i -= 1
 
             # If not RNA mode, use old parsing logic
             if not is_rna_mode:
@@ -170,18 +194,41 @@ def parse_stdout(stdout: str) -> dict:
                         if states_match.group(2):
                             sequence_data["max_stack_depth"] = int(states_match.group(2))
 
-            # Add match count for this sequence
-            sequence_data["match_count"] = len(sequence_data["matches"])
-            sequence_data["has_matches"] = len(sequence_data["matches"]) > 0
-            
-            # Calculate match coverage (percentage of sequence covered by matches)
-            if sequence_data["match_ranges"] and seq_len > 0:
-                covered_positions = set()
-                for match_range in sequence_data["match_ranges"]:
-                    covered_positions.update(range(match_range["start"], match_range["end"]))
-                sequence_data["coverage"] = len(covered_positions) / seq_len
+            # Normalize sequence text when running RNA validation so UI consumers
+            # don't need to read two different fields.
+            if is_rna_mode and sequence_data["rna_sequence"]:
+                sequence_data["sequence_text"] = sequence_data["rna_sequence"]
+
+            if is_rna_mode:
+                # Treat a valid RNA pairing as a successful match for stats/coverage.
+                sequence_data["match_count"] = 1 if sequence_data["rna_result"] == "Valid" else 0
+                sequence_data["has_matches"] = sequence_data["match_count"] > 0
+                if sequence_data["has_matches"] and seq_len > 0:
+                    sequence_data["coverage"] = 1.0
+                else:
+                    sequence_data["coverage"] = 0.0
+
+                sequence_data["pda_validation"] = {
+                    "sequence": sequence_data.get("rna_sequence"),
+                    "structure": sequence_data.get("dot_bracket"),
+                    "valid_rna_bases": sequence_data.get("rna_valid_bases"),
+                    "checks": sequence_data.get("rna_checks", []),
+                    "result": sequence_data.get("rna_result"),
+                    "messages": sequence_data.get("pda_messages", []),
+                }
             else:
-                sequence_data["coverage"] = 0.0
+                # Add match count for regex/NFA/DFA/EFA/PDA (dot-bracket) modes
+                sequence_data["match_count"] = len(sequence_data["matches"])
+                sequence_data["has_matches"] = len(sequence_data["matches"]) > 0
+                
+                # Calculate match coverage (percentage of sequence covered by matches)
+                if sequence_data["match_ranges"] and seq_len > 0:
+                    covered_positions = set()
+                    for match_range in sequence_data["match_ranges"]:
+                        covered_positions.update(range(match_range["start"], match_range["end"]))
+                    sequence_data["coverage"] = len(covered_positions) / seq_len
+                else:
+                    sequence_data["coverage"] = 0.0
 
             result["sequences"].append(sequence_data)
         i += 1
@@ -213,5 +260,24 @@ def parse_stdout(stdout: str) -> dict:
         else 0.0
     )
 
-    return result
+    if result["automaton_mode"].lower() == "pda":
+        pda_sequences = []
+        for seq in result["sequences"]:
+            pda_sequences.append(
+                {
+                    "sequence_number": seq.get("sequence_number"),
+                    "length": seq.get("length"),
+                    "sequence": seq.get("sequence_text"),
+                    "dot_bracket": seq.get("dot_bracket"),
+                    "result": seq.get("rna_result"),
+                    "valid_rna_bases": seq.get("rna_valid_bases"),
+                    "checks": seq.get("rna_checks", []),
+                    "messages": seq.get("pda_messages", []),
+                    "has_matches": seq.get("has_matches", False),
+                    "match_count": seq.get("match_count", 0),
+                    "coverage": seq.get("coverage", 0.0),
+                }
+            )
+        result["pda_sequences"] = pda_sequences
 
+    return result

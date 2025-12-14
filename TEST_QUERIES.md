@@ -386,6 +386,20 @@ curl "http://127.0.0.1:5000/simulate?mode=pda&rna_mode=true&sequences=CGUAGCUCUG
 **Response includes**:
 ```json
 {
+  "pda_sequences": [
+    {
+      "sequence": "CGUAGCUCUG",
+      "dot_bracket": "(..((..)))",
+      "result": "Valid",
+      "checks": [
+        "5th nucleotide G <-> 8th nucleotide C -> valid? [OK]",
+        "4th nucleotide A <-> 9th nucleotide U -> valid? [OK]",
+        "1th nucleotide C <-> 10th nucleotide G -> valid? [OK]",
+        "Parentheses balanced? [OK]"
+      ],
+      "messages": []
+    }
+  ],
   "sequences": [{
     "rna_sequence": "CGUAGCUCUG",
     "dot_bracket": "(..((..)))",
