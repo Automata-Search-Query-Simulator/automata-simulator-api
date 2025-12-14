@@ -3,12 +3,11 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/healthz')
-@app.route('/simulate')
-@app.route('/<path:path>')
-def catch_all(path=''):
+@app.route('/api')
+@app.route('/api/')
+@app.route('/api/index')
+def index():
     return jsonify({
-        "status": "api/index.py is loading!",
-        "message": "Basic Flask is working, but BACKEND imports are disabled for testing",
-        "path": path
+        "status": "api/index.py is working!",
+        "message": "Basic Flask is working, BACKEND imports disabled for testing"
     })
