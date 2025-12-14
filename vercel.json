@@ -1,2 +1,34 @@
-{}
-
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "BACKEND/**"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/simulate",
+      "dest": "api/simulate.py"
+    },
+    {
+      "src": "/api/healthz",
+      "dest": "api/healthz.py"
+    },
+    {
+      "src": "/api/hello",
+      "dest": "api/hello.py"
+    },
+    {
+      "src": "/api/test",
+      "dest": "api/test.py"
+    },
+    {
+      "src": "/",
+      "dest": "api/index.py"
+    }
+  ]
+}
