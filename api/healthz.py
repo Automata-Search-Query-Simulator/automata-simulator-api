@@ -2,8 +2,11 @@
 import sys
 from pathlib import Path
 from flask import Flask, jsonify
+from index import configure_cors
 
 app = Flask(__name__)
+# Configure CORS with centralized configuration
+configure_cors(app)
 
 # Add BACKEND to path
 backend_dir = Path(__file__).resolve().parent.parent / "BACKEND"

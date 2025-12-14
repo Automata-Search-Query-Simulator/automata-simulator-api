@@ -20,8 +20,11 @@ from config import AUTOMATA_SIM_PATH, BackendConfigError, ensure_binary_availabl
 from logger import get_logger
 from parser import parse_stdout
 from utils import build_command, write_sequences_to_tempfile, create_automaton_dump_file
+from index import configure_cors
 
 app = Flask(__name__)
+# Configure CORS with centralized configuration
+configure_cors(app)
 logger = get_logger()
 
 @app.route('/', methods=["GET"])
