@@ -1,26 +1,6 @@
-# Ignore Python cache and virtual environments
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
 .venv/
-venv/
-ENV/
-env/
-
-# Ignore logs
-*.log
 BACKEND/logs/
-
-# Ignore OS files
-.DS_Store
-Thumbs.db
-
-# Ignore test files and documentation
-TEST_QUERIES.md
-PR_DESCRIPTION.md
-
-# Ignore Windows binary (not needed on Vercel's Linux servers)
 BACKEND/automata_sim.exe
-
+*.log
