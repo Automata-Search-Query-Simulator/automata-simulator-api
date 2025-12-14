@@ -17,7 +17,7 @@ def parse_match_range(match_str: str) -> dict:
         }
     return {"range": match_str, "start": 0, "end": 0, "length": 0}
 
-
+#comment for testing
 def parse_stdout(stdout: str) -> dict:
     """Parse the stdout from automata_sim into structured JSON."""
     result = {
