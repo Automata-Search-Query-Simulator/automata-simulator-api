@@ -37,4 +37,15 @@ def ensure_binary_available() -> None:
             )
         
         raise BackendConfigError(error_msg)
+    
+    # Ensure binary is executable on Unix-like systems
+    if platform.system() != "Windows":
+        import stat
+        current_permissions = os.stat(AUTOMATA_SIM_PATH).st_mode
+        if not (current_permissions & stat.S_IXUSR):
+            try:
+                os.chmod(AUTOMATA_SIM_PATH, current_permissions | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+            except (OSError, PermissionError):
+                # If we can't set permissions, it might work anyway
+                pass
 

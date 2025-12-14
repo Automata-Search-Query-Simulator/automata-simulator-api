@@ -108,6 +108,7 @@ def simulate():
             encoding="utf-8",
             errors="replace",
             check=False,
+            timeout=30,  # 30 second timeout for Vercel
         )
         
         # Log execution result when in debug mode
@@ -146,6 +147,23 @@ def simulate():
             os.unlink(temp_dataset_path)
         if temp_secondary_path:
             os.unlink(temp_secondary_path)
+
+    except subprocess.TimeoutExpired:
+        if temp_dataset_path:
+            os.unlink(temp_dataset_path)
+        if temp_secondary_path:
+            os.unlink(temp_secondary_path)
+        if automaton_dump_path and os.path.exists(automaton_dump_path):
+            os.unlink(automaton_dump_path)
+        return jsonify({"error": "Simulation timed out (>30s)"}), 500
+    except Exception as e:
+        if temp_dataset_path:
+            os.unlink(temp_dataset_path)
+        if temp_secondary_path:
+            os.unlink(temp_secondary_path)
+        if automaton_dump_path and os.path.exists(automaton_dump_path):
+            os.unlink(automaton_dump_path)
+        return jsonify({"error": "Execution failed", "message": str(e), "type": type(e).__name__}), 500
 
     # Parse stdout into structured JSON
     if completed.returncode == 0:
