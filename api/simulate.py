@@ -1,27 +1,31 @@
+"""Simulate endpoint for Vercel - uses exact same logic as BACKEND/app.py"""
 import json
 import logging
 import os
 import subprocess
+import sys
+import traceback
+from pathlib import Path
 from urllib.parse import unquote
 
 from flask import Flask, jsonify, request
-from flask_cors import CORS
 
+# Add BACKEND to path so we can import from it
+backend_dir = Path(__file__).resolve().parent.parent / "BACKEND"
+sys.path.insert(0, str(backend_dir))
+os.environ["VERCEL"] = "1"
+
+# Import BACKEND modules
 from config import AUTOMATA_SIM_PATH, BackendConfigError, ensure_binary_available
 from logger import get_logger
 from parser import parse_stdout
 from utils import build_command, write_sequences_to_tempfile, create_automaton_dump_file
 
 app = Flask(__name__)
-# Allow all origins in development; restrict in production
-# Using CORS() without arguments allows all origins by default
-CORS(app)
 logger = get_logger()
 
-
-
-
-@app.route("/simulate", methods=["GET"])
+@app.route('/', methods=["GET"])
+@app.route('/api/simulate', methods=["GET"])
 def simulate():
     try:
         try:
@@ -205,25 +209,9 @@ def simulate():
             }), 500
     except Exception as e:
         # Catch any unhandled exception
-        import traceback
         return jsonify({
             "error": "Unhandled exception in /simulate",
             "message": str(e),
             "type": type(e).__name__,
             "traceback": traceback.format_exc()
         }), 500
-
-
-@app.route("/healthz", methods=["GET"])
-def healthz():
-    exists = AUTOMATA_SIM_PATH.exists()
-    return jsonify({"status": "ok" if exists else "binary-missing", "binary": str(AUTOMATA_SIM_PATH)})
-
-
-if __name__ == "__main__":
-    ensure_binary_available()
-    # Set Flask debug mode and update logger level accordingly
-    os.environ["FLASK_DEBUG"] = "true"
-    logger.setLevel(logging.DEBUG)
-    app.run(debug=True)
-

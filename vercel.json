@@ -2,18 +2,33 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",
+      "src": "api/**/*.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "50mb"
+        "includeFiles": "BACKEND/**"
       }
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/simulate",
+      "dest": "api/simulate.py"
+    },
+    {
+      "src": "/api/healthz",
+      "dest": "api/healthz.py"
+    },
+    {
+      "src": "/api/hello",
+      "dest": "api/hello.py"
+    },
+    {
+      "src": "/api/test",
+      "dest": "api/test.py"
+    },
+    {
+      "src": "/",
       "dest": "api/index.py"
     }
   ]
 }
-
