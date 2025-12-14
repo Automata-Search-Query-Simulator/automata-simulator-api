@@ -12,6 +12,26 @@ else:
     DEFAULT_BINARY = BASE_DIR / "automata_sim"
 AUTOMATA_SIM_PATH = Path(os.environ.get("AUTOMATA_SIM_PATH", DEFAULT_BINARY))
 
+# On Vercel, includeFiles may nest assets under the function's folder.
+# Try alternate locations if the default path doesn't exist.
+def _resolve_binary_path() -> Path:
+    candidate_paths = [AUTOMATA_SIM_PATH]
+    try:
+        # Path relative to api function directory (when packed with includeFiles)
+        api_dir = Path(__file__).resolve().parent.parent / "api"
+        candidate_paths.append(api_dir / "BACKEND" / ("automata_sim.exe" if platform.system() == "Windows" else "automata_sim"))
+        # Project root BACKEND (when executed from different CWD)
+        project_root = BASE_DIR.parent
+        candidate_paths.append(project_root / "BACKEND" / ("automata_sim.exe" if platform.system() == "Windows" else "automata_sim"))
+    except Exception:
+        pass
+    for p in candidate_paths:
+        if p and Path(p).exists():
+            return Path(p)
+    return AUTOMATA_SIM_PATH
+
+AUTOMATA_SIM_PATH = _resolve_binary_path()
+
 
 class BackendConfigError(RuntimeError):
     """Exception raised for configuration errors."""

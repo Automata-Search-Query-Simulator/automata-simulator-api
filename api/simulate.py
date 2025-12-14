@@ -26,11 +26,18 @@ logger = get_logger()
 @app.route('/api/simulate', methods=["GET"])
 def simulate():
     try:
-        # Check binary
+        # Check binary and guard early if missing
         try:
             ensure_binary_available()
         except BackendConfigError as exc:
-            return jsonify({"error": str(exc)}), 400
+            return jsonify({"error": "Binary not available", "message": str(exc)}), 400
+
+        # Extra safety: if path still does not exist, return 400
+        if not os.path.exists(str(AUTOMATA_SIM_PATH)):
+            return jsonify({
+                "error": "Binary not found",
+                "message": f"No binary at {AUTOMATA_SIM_PATH}. Provide Linux binary 'BACKEND/automata_sim' or set AUTOMATA_SIM_PATH.",
+            }), 400
 
         # Get parameters
         payload = {
@@ -53,24 +60,37 @@ def simulate():
                 temp_dataset_path = write_sequences_to_tempfile(sequences)
                 dataset_path = temp_dataset_path
 
-        # Ensure binary is executable
+        # Ensure binary is executable (best-effort on Unix)
         import stat
-        if not os.access(str(AUTOMATA_SIM_PATH), os.X_OK):
-            os.chmod(str(AUTOMATA_SIM_PATH), os.stat(str(AUTOMATA_SIM_PATH)).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        try:
+            if os.path.exists(str(AUTOMATA_SIM_PATH)) and not os.access(str(AUTOMATA_SIM_PATH), os.X_OK):
+                os.chmod(str(AUTOMATA_SIM_PATH), os.stat(str(AUTOMATA_SIM_PATH)).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+        except Exception:
+            # Ignore permission errors; subprocess will surface issues
+            pass
 
         # Build command
         cmd = build_command(payload, dataset_path, None)
 
         # Execute
-        completed = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            check=False,
-            timeout=30,
-        )
+        try:
+            completed = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                check=False,
+                timeout=30,
+            )
+        except FileNotFoundError as e:
+            return jsonify({
+                "error": "Execution failed",
+                "message": "Simulator binary missing at runtime",
+                "details": str(e),
+                "binary": str(AUTOMATA_SIM_PATH),
+                "hint": "Include Linux binary 'BACKEND/automata_sim' in repo or set AUTOMATA_SIM_PATH to an existing path.",
+            }), 400
 
         # Cleanup
         if temp_dataset_path:
