@@ -53,6 +53,11 @@ def simulate():
                 temp_dataset_path = write_sequences_to_tempfile(sequences)
                 dataset_path = temp_dataset_path
 
+        # Ensure binary is executable
+        import stat
+        if not os.access(str(AUTOMATA_SIM_PATH), os.X_OK):
+            os.chmod(str(AUTOMATA_SIM_PATH), os.stat(str(AUTOMATA_SIM_PATH)).st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+
         # Build command
         cmd = build_command(payload, dataset_path, None)
 
