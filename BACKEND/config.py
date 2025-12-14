@@ -12,6 +12,26 @@ else:
     DEFAULT_BINARY = BASE_DIR / "automata_sim"
 AUTOMATA_SIM_PATH = Path(os.environ.get("AUTOMATA_SIM_PATH", DEFAULT_BINARY))
 
+# On Vercel, includeFiles may nest assets under the function's folder.
+# Try alternate locations if the default path doesn't exist.
+def _resolve_binary_path() -> Path:
+    candidate_paths = [AUTOMATA_SIM_PATH]
+    try:
+        # Prefer path relative to api function directory (common Vercel packing)
+        api_dir = BASE_DIR.parent / "api"
+        candidate_paths.insert(0, api_dir / "BACKEND" / ("automata_sim.exe" if platform.system() == "Windows" else "automata_sim"))
+        # Project root BACKEND (when executed from different CWD)
+        project_root = BASE_DIR.parent
+        candidate_paths.append(project_root / "BACKEND" / ("automata_sim.exe" if platform.system() == "Windows" else "automata_sim"))
+    except Exception:
+        pass
+    for p in candidate_paths:
+        if p and Path(p).exists():
+            return Path(p)
+    return AUTOMATA_SIM_PATH
+
+AUTOMATA_SIM_PATH = _resolve_binary_path()
+
 
 class BackendConfigError(RuntimeError):
     """Exception raised for configuration errors."""
@@ -37,4 +57,15 @@ def ensure_binary_available() -> None:
             )
         
         raise BackendConfigError(error_msg)
+    
+    # Ensure binary is executable on Unix-like systems
+    if platform.system() != "Windows":
+        import stat
+        current_permissions = os.stat(AUTOMATA_SIM_PATH).st_mode
+        if not (current_permissions & stat.S_IXUSR):
+            try:
+                os.chmod(AUTOMATA_SIM_PATH, current_permissions | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+            except (OSError, PermissionError):
+                # If we can't set permissions, it might work anyway
+                pass
 

@@ -94,10 +94,34 @@ Sequence #1 (len=12)
 
 Runs: 1, Matches: 6, All accepted: no
 
+<<<<<<< Updated upstream
 2025-11-20 11:22:58 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
 2025-11-20 11:22:58 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
 2025-11-20 11:22:58 - automata_simulator - DEBUG - Command return code: 0
 2025-11-20 11:22:58 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+=======
+<<<<<<< Updated upstream
+2025-11-22 21:57:04 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --mode dfa --input /var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpdncdpqph.txt --dump-automaton /var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpo67fp2y2.json
+2025-11-22 21:57:04 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--mode', 'dfa', '--input', '/var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpdncdpqph.txt', '--dump-automaton', '/var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpo67fp2y2.json']
+2025-11-22 21:57:04 - automata_simulator - DEBUG - Command return code: 1
+2025-11-22 21:57:04 - automata_simulator - DEBUG - Command stderr: Unknown or incomplete argument: --dump-automaton
+
+=======
+2025-11-22 21:48:32 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt --dump-automaton /var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmp2su9grxe.json
+2025-11-22 21:48:32 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt', '--dump-automaton', '/var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmp2su9grxe.json']
+2025-11-22 21:48:32 - automata_simulator - DEBUG - Command return code: 1
+2025-11-22 21:48:32 - automata_simulator - DEBUG - Command stderr: Unknown or incomplete argument: --dump-automaton
+
+2025-11-22 21:48:37 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt --dump-automaton /var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpqcwoa0n7.json
+2025-11-22 21:48:37 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt', '--dump-automaton', '/var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmpqcwoa0n7.json']
+2025-11-22 21:48:37 - automata_simulator - DEBUG - Command return code: 1
+2025-11-22 21:48:37 - automata_simulator - DEBUG - Command stderr: Unknown or incomplete argument: --dump-automaton
+
+2025-11-22 21:49:26 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-22 21:49:26 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-22 21:49:26 - automata_simulator - DEBUG - Command return code: 0
+2025-11-22 21:49:26 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+>>>>>>> Stashed changes
 ╔══════════ Automata Simulator ══════════╗
 Pattern: A(CG|TT)*
 Datasets: 1 sequence(s)
@@ -110,10 +134,18 @@ Sequence #1 (len=12)
 
 Runs: 1, Matches: 6, All accepted: no
 
+<<<<<<< Updated upstream
 2025-11-20 11:24:09 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
 2025-11-20 11:24:09 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
 2025-11-20 11:24:09 - automata_simulator - DEBUG - Command return code: 0
 2025-11-20 11:24:09 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+=======
+2025-11-22 21:49:26 - automata_simulator - WARNING - Failed to read automaton dump file: Expecting value: line 1 column 1 (char 0)
+2025-11-22 21:50:00 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 2 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-22 21:50:00 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '2', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-22 21:50:00 - automata_simulator - DEBUG - Command return code: 0
+2025-11-22 21:50:00 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+>>>>>>> Stashed changes
 ╔══════════ Automata Simulator ══════════╗
 Pattern: A(CG|TT)*
 Datasets: 1 sequence(s)
@@ -126,10 +158,18 @@ Sequence #1 (len=12)
 
 Runs: 1, Matches: 6, All accepted: no
 
+<<<<<<< Updated upstream
 2025-11-20 11:26:41 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
 2025-11-20 11:26:41 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
 2025-11-20 11:26:41 - automata_simulator - DEBUG - Command return code: 0
 2025-11-20 11:26:41 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+=======
+2025-11-22 21:50:00 - automata_simulator - WARNING - Failed to read automaton dump file: Expecting value: line 1 column 1 (char 0)
+2025-11-22 21:50:07 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
+2025-11-22 21:50:07 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
+2025-11-22 21:50:07 - automata_simulator - DEBUG - Command return code: 0
+2025-11-22 21:50:07 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+>>>>>>> Stashed changes
 ╔══════════ Automata Simulator ══════════╗
 Pattern: A(CG|TT)*
 Datasets: 1 sequence(s)
@@ -142,16 +182,25 @@ Sequence #1 (len=12)
 
 Runs: 1, Matches: 6, All accepted: no
 
+<<<<<<< Updated upstream
 2025-11-20 11:28:56 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --k 0 --mode nfa --input /Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt
 2025-11-20 11:28:56 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', '/Users/raldhelbiro/Documents/Projects/C++/automata_simulator/datasets/dna/sample.txt']
 2025-11-20 11:28:56 - automata_simulator - DEBUG - Command return code: 0
 2025-11-20 11:28:56 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+=======
+2025-11-22 21:50:07 - automata_simulator - WARNING - Failed to read automaton dump file: Expecting value: line 1 column 1 (char 0)
+2025-11-22 21:50:09 - automata_simulator - DEBUG - Executing command: /Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim --pattern A(CG|TT)* --mode nfa --input /var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmptmtof_gr.txt
+2025-11-22 21:50:09 - automata_simulator - DEBUG - Command arguments: ['/Users/raldhelbiro/Documents/Projects/Flask/automata-simulator-api/BACKEND/automata_sim', '--pattern', 'A(CG|TT)*', '--mode', 'nfa', '--input', '/var/folders/_v/9p39pcln3d13thjzv0qkgvg00000gn/T/tmptmtof_gr.txt']
+2025-11-22 21:50:09 - automata_simulator - DEBUG - Command return code: 0
+2025-11-22 21:50:09 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+>>>>>>> Stashed changes
 ╔══════════ Automata Simulator ══════════╗
 Pattern: A(CG|TT)*
 Datasets: 1 sequence(s)
 Automaton Mode: NFA
 
 Sequence #1 (len=12)
+<<<<<<< Updated upstream
   Matches: [0,1) [0,3) [4,5) [4,7) [8,9) [8,11) 
   ACGTACGTACGT
   States visited: 48
@@ -301,4 +350,323 @@ Sequence #1 (len=12)
   States visited: 48
 
 Runs: 1, Matches: 6, All accepted: no
+
+=======
+  Matches: [2,3) [2,5) [6,7) [6,9) 
+  ["ACGTACGT"]
+  States visited: 32
+
+Runs: 1, Matches: 4, All accepted: no
+
+2025-11-22 21:50:09 - automata_simulator - WARNING - Failed to read automaton dump file: Expecting value: line 1 column 1 (char 0)
+>>>>>>> Stashed changes
+2025-11-22 21:59:38 - automata_simulator - WARNING - Failed to read automaton dump file: Expecting value: line 1 column 1 (char 0)
+2025-11-22 22:02:47 - automata_simulator - WARNING - Failed to read automaton dump file: Expecting value: line 1 column 1 (char 0)
+2025-11-22 22:04:41 - automata_simulator - WARNING - Binary doesn't support --dump-automaton flag, retrying without it
+2025-11-22 22:04:46 - automata_simulator - WARNING - Binary doesn't support --dump-automaton flag, retrying without it
+2025-11-22 22:05:47 - automata_simulator - WARNING - Binary doesn't support --dump-automaton flag, retrying without it
+>>>>>>> Stashed changes
+2025-12-14 08:24:00 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --mode pda --rna --input C:\Users\RHENEL~1\AppData\Local\Temp\tmpbpxz4mgx.txt --secondary C:\Users\RHENEL~1\AppData\Local\Temp\tmpulw005fg.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmpz2hnkj8z.json
+2025-12-14 08:24:00 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--mode', 'pda', '--rna', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpbpxz4mgx.txt', '--secondary', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpulw005fg.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpz2hnkj8z.json']
+2025-12-14 08:24:00 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:24:00 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: 
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=10)
+  Sequence:    CGUAGCUCUG
+  Dot-bracket: (..((..)))
+
+  [OK] Valid RNA Bases
+  Check:
+  - 5th nucleotide G <-> 8th nucleotide C -> valid? [OK]
+  - 4th nucleotide A <-> 9th nucleotide U -> valid? [OK]
+  - 1th nucleotide C <-> 10th nucleotide G -> valid? [OK]
+  - Parentheses balanced? [OK]
+  -> Result: Valid
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:24:00 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: 
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=10)
+  Sequence:    CGUAGCUCUG
+  Dot-bracket: (..((..)))
+
+  [OK] Valid RNA Bases
+  Check:
+  - 5th nucleotide G <-> 8th nucleotide C -> valid? [OK]
+  - 4th nucleotide A <-> 9th nucleotide U -> valid? [OK]
+  - 1th nucleotide C <-> 10th nucleotide G -> valid? [OK]
+  - Parentheses balanced? [OK]
+  -> Result: Valid
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:25:43 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --mode pda --rna --input C:\Users\RHENEL~1\AppData\Local\Temp\tmp41ivt653.txt --secondary C:\Users\RHENEL~1\AppData\Local\Temp\tmpw9r5q64o.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmpfz1k6sas.json
+2025-12-14 08:25:43 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--mode', 'pda', '--rna', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmp41ivt653.txt', '--secondary', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpw9r5q64o.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpfz1k6sas.json']
+2025-12-14 08:25:43 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:25:43 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: 
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=10)
+  Sequence:    CGUAGCUCUG
+  Dot-bracket: (..((..)))
+
+  [OK] Valid RNA Bases
+  Check:
+  - 5th nucleotide G <-> 8th nucleotide C -> valid? [OK]
+  - 4th nucleotide A <-> 9th nucleotide U -> valid? [OK]
+  - 1th nucleotide C <-> 10th nucleotide G -> valid? [OK]
+  - Parentheses balanced? [OK]
+  -> Result: Valid
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:25:43 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: 
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=10)
+  Sequence:    CGUAGCUCUG
+  Dot-bracket: (..((..)))
+
+  [OK] Valid RNA Bases
+  Check:
+  - 5th nucleotide G <-> 8th nucleotide C -> valid? [OK]
+  - 4th nucleotide A <-> 9th nucleotide U -> valid? [OK]
+  - 1th nucleotide C <-> 10th nucleotide G -> valid? [OK]
+  - Parentheses balanced? [OK]
+  -> Result: Valid
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:29:25 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --pattern A(CG|TT)* --k 0 --mode nfa --input C:\Users\RHENEL~1\AppData\Local\Temp\tmp8vayeu4c.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmpnz6yqg0l.json
+2025-12-14 08:29:25 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'nfa', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmp8vayeu4c.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpnz6yqg0l.json']
+2025-12-14 08:29:25 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:29:25 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 2 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=5)
+  Matches: [0,1) [0,3) [0,5) 
+  ACGTT
+  States visited: 22
+
+Sequence #2 (len=4)
+  Matches: [0,1) 
+  ACTT
+  States visited: 8
+
+Runs: 2, Matches: 4, All accepted: no
+
+2025-12-14 08:29:25 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 2 sequence(s)
+Automaton Mode: NFA
+
+Sequence #1 (len=5)
+  Matches: [0,1) [0,3) [0,5) 
+  ACGTT
+  States visited: 22
+
+Sequence #2 (len=4)
+  Matches: [0,1) 
+  ACTT
+  States visited: 8
+
+Runs: 2, Matches: 4, All accepted: no
+
+2025-12-14 08:29:29 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --pattern A(CG|TT)* --k 0 --mode dfa --input C:\Users\RHENEL~1\AppData\Local\Temp\tmpy79l1499.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmp5xo7nhl_.json
+2025-12-14 08:29:29 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--pattern', 'A(CG|TT)*', '--k', '0', '--mode', 'dfa', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpy79l1499.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmp5xo7nhl_.json']
+2025-12-14 08:29:29 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:29:29 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 2 sequence(s)
+Automaton Mode: DFA
+
+Sequence #1 (len=5)
+  Matches: [0,1) [0,3) [0,5) 
+  ACGTT
+  States visited: 9
+
+Sequence #2 (len=4)
+  Matches: [0,1) 
+  ACTT
+  States visited: 6
+
+Runs: 2, Matches: 4, All accepted: no
+
+2025-12-14 08:29:29 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: A(CG|TT)*
+Datasets: 2 sequence(s)
+Automaton Mode: DFA
+
+Sequence #1 (len=5)
+  Matches: [0,1) [0,3) [0,5) 
+  ACGTT
+  States visited: 9
+
+Sequence #2 (len=4)
+  Matches: [0,1) 
+  ACTT
+  States visited: 6
+
+Runs: 2, Matches: 4, All accepted: no
+
+2025-12-14 08:29:33 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --pattern ACGTACGT --k 0 --mode efa --input C:\Users\RHENEL~1\AppData\Local\Temp\tmp6yk87mfb.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmptyjpt40y.json
+2025-12-14 08:29:33 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--pattern', 'ACGTACGT', '--k', '0', '--mode', 'efa', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmp6yk87mfb.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmptyjpt40y.json']
+2025-12-14 08:29:33 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:29:33 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: ACGTACGT
+Datasets: 2 sequence(s)
+Automaton Mode: EFA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ACGTACGT
+  States visited: 23
+
+Sequence #2 (len=8)
+  No matches found.
+  States visited: 12
+
+Runs: 2, Matches: 1, All accepted: no
+
+2025-12-14 08:29:33 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: ACGTACGT
+Datasets: 2 sequence(s)
+Automaton Mode: EFA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ACGTACGT
+  States visited: 23
+
+Sequence #2 (len=8)
+  No matches found.
+  States visited: 12
+
+Runs: 2, Matches: 1, All accepted: no
+
+2025-12-14 08:29:40 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --pattern ..((..)) --k 0 --dot-bracket --mode pda --input C:\Users\RHENEL~1\AppData\Local\Temp\tmp7lfk7038.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmpy3ri5p9z.json
+2025-12-14 08:29:40 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--pattern', '..((..))', '--k', '0', '--dot-bracket', '--mode', 'pda', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmp7lfk7038.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpy3ri5p9z.json']
+2025-12-14 08:29:40 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:29:40 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: ..((..))
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ..((..))
+  States visited: 8 | Max stack depth: 2
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:29:40 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: ..((..))
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ..((..))
+  States visited: 8 | Max stack depth: 2
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:30:34 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --pattern ..((..)) --k 0 --dot-bracket --mode pda --input C:\Users\RHENEL~1\AppData\Local\Temp\tmp3e7wifvr.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmpw7qkm32y.json
+2025-12-14 08:30:34 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--pattern', '..((..))', '--k', '0', '--dot-bracket', '--mode', 'pda', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmp3e7wifvr.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpw7qkm32y.json']
+2025-12-14 08:30:34 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:30:34 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: ..((..))
+Datasets: 2 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ..((..))
+  States visited: 8 | Max stack depth: 2
+
+Sequence #2 (len=10)
+  No matches found.
+  States visited: 1 | Max stack depth: 0
+
+Runs: 2, Matches: 1, All accepted: no
+
+2025-12-14 08:30:34 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: ..((..))
+Datasets: 2 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ..((..))
+  States visited: 8 | Max stack depth: 2
+
+Sequence #2 (len=10)
+  No matches found.
+  States visited: 1 | Max stack depth: 0
+
+Runs: 2, Matches: 1, All accepted: no
+
+2025-12-14 08:37:22 - automata_simulator - DEBUG - Executing command: C:\Users\Rhenel Jhon Sajol\Documents\apiiiiiiiiiiiiiiiiiiiiiii\automata-simulator-api\BACKEND\automata_sim.exe --pattern ..((..)) --k 0 --dot-bracket --mode pda --input C:\Users\RHENEL~1\AppData\Local\Temp\tmpxoyktuno.txt --dump-automaton C:\Users\RHENEL~1\AppData\Local\Temp\tmpwa9q_uxs.json
+2025-12-14 08:37:22 - automata_simulator - DEBUG - Command arguments: ['C:\\Users\\Rhenel Jhon Sajol\\Documents\\apiiiiiiiiiiiiiiiiiiiiiii\\automata-simulator-api\\BACKEND\\automata_sim.exe', '--pattern', '..((..))', '--k', '0', '--dot-bracket', '--mode', 'pda', '--input', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpxoyktuno.txt', '--dump-automaton', 'C:\\Users\\RHENEL~1\\AppData\\Local\\Temp\\tmpwa9q_uxs.json']
+2025-12-14 08:37:22 - automata_simulator - DEBUG - Command return code: 0
+2025-12-14 08:37:22 - automata_simulator - DEBUG - Command stdout (first 500 chars): 
+╔══════════ Automata Simulator ══════════╗
+Pattern: ..((..))
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ..((..))
+  States visited: 8 | Max stack depth: 2
+
+Runs: 1, Matches: 1, All accepted: yes
+
+2025-12-14 08:37:22 - automata_simulator - DEBUG - Raw stdout from C++ binary:
+
+╔══════════ Automata Simulator ══════════╗
+Pattern: ..((..))
+Datasets: 1 sequence(s)
+Automaton Mode: PDA
+
+Sequence #1 (len=8)
+  Matches: [0,8) 
+  ..((..))
+  States visited: 8 | Max stack depth: 2
+
+Runs: 1, Matches: 1, All accepted: yes
 

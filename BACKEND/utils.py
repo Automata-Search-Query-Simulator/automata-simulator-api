@@ -26,11 +26,21 @@ def build_command(payload: dict, dataset_path: str, automaton_dump_path: str = N
     if mode != "auto":
         cmd += ["--mode", mode]
 
+    # RNA-specific flags for PDA mode
+    if payload.get("rna_mode"):
+        cmd.append("--rna")
+
     if dataset_path:
         cmd += ["--input", dataset_path]
 
-    # Add --dump-automaton for modes that support automaton dumping so the
-    # frontend can visualize the structure (states + transitions)
+    # Secondary structure file for RNA PDA mode
+    secondary_path = payload.get("secondary_structure_path")
+    if secondary_path:
+        cmd += ["--secondary", secondary_path]
+
+    # Add --dump-automaton flag if dump path is provided and mode supports it
+    # Note: This will work if the binary supports it, otherwise it will be ignored
+    # and the automaton data simply won't be included in the response
     if automaton_dump_path and mode in {"nfa", "dfa", "efa", "pda"}:
         cmd += ["--dump-automaton", automaton_dump_path]
 
@@ -39,7 +49,8 @@ def build_command(payload: dict, dataset_path: str, automaton_dump_path: str = N
 
 def write_sequences_to_tempfile(sequences: list[str]) -> str:
     """Write sequences to a temporary file and return the file path."""
-    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".txt", mode="w", encoding="utf-8")
+    # Use utf-8-sig to write without BOM, or use utf-8 with newline='' to avoid issues
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".txt", mode="w", encoding="utf-8", newline='\n')
     try:
         for seq in sequences:
             tmp.write(seq.strip() + "\n")

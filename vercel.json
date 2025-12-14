@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "BACKEND/**"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/simulate",
+      "dest": "api/simulate.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://automata-simulator-web.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    },
+    {
+      "src": "/api/healthz",
+      "dest": "api/healthz.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://automata-simulator-web.vercel.app",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    },
+    {
+      "src": "/api/hello",
+      "dest": "api/hello.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://automata-simulator-web.vercel.app",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    },
+    {
+      "src": "/api/test",
+      "dest": "api/test.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://automata-simulator-web.vercel.app",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    },
+    {
+      "src": "/",
+      "dest": "api/index.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://automata-simulator-web.vercel.app",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    }
+  ]
+}

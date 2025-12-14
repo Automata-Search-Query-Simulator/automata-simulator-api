@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+BACKEND/logs/
+BACKEND/automata_sim.exe
+*.log
+!BACKEND/automata_sim

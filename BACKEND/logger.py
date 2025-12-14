@@ -26,21 +26,7 @@ def setup_logger(name: str = "automata_simulator", log_level: str = "INFO") -> l
     level = getattr(logging, log_level.upper(), logging.INFO)
     logger.setLevel(level)
     
-    # Create logs directory if it doesn't exist
-    log_dir = Path(__file__).parent / "logs"
-    log_dir.mkdir(exist_ok=True)
-    
-    # Create file handler with rotation
-    log_file = log_dir / "automata_simulator.log"
-    file_handler = RotatingFileHandler(
-        log_file,
-        maxBytes=10 * 1024 * 1024,  # 10MB
-        backupCount=5,
-        encoding="utf-8"
-    )
-    file_handler.setLevel(level)
-    
-    # Create console handler
+    # Create console handler only (Vercel environment is read-only)
     console_handler = logging.StreamHandler()
     console_handler.setLevel(level)
     
@@ -50,12 +36,30 @@ def setup_logger(name: str = "automata_simulator", log_level: str = "INFO") -> l
         datefmt="%Y-%m-%d %H:%M:%S"
     )
     
-    file_handler.setFormatter(formatter)
     console_handler.setFormatter(formatter)
     
-    # Add handlers to logger
-    logger.addHandler(file_handler)
+    # Add handler to logger
     logger.addHandler(console_handler)
+    
+    # Only add file handler if not in serverless environment
+    # Check for writable filesystem (local development)
+    try:
+        log_dir = Path(__file__).parent / "logs"
+        if log_dir.exists() or os.access(Path(__file__).parent, os.W_OK):
+            log_dir.mkdir(exist_ok=True)
+            log_file = log_dir / "automata_simulator.log"
+            file_handler = RotatingFileHandler(
+                log_file,
+                maxBytes=10 * 1024 * 1024,  # 10MB
+                backupCount=5,
+                encoding="utf-8"
+            )
+            file_handler.setLevel(level)
+            file_handler.setFormatter(formatter)
+            logger.addHandler(file_handler)
+    except (OSError, PermissionError):
+        # Silently skip file logging in read-only environments (like Vercel)
+        pass
     
     return logger
 

@@ -156,6 +156,30 @@ GET http://127.0.0.1:5000/simulate?mode=efa&pattern=ACGT&mismatch_budget=2&seque
 GET http://127.0.0.1:5000/simulate?mode=pda&allow_dot_bracket=true&sequences=(()())&sequences=((..))
 ```
 
+When the simulator runs in PDA mode, the response includes a `pda_sequences` array in addition to the regular `sequences` data. Each entry surfaces PDA/RNA-specific validation details:
+
+```jsonc
+"pda_sequences": [
+  {
+    "sequence_number": 1,
+    "sequence": "AGCU",
+    "dot_bracket": "(..)",
+    "result": "Valid",
+    "valid_rna_bases": true,
+    "checks": [
+      "1th nucleotide A <-> 4th nucleotide U -> valid? [OK]",
+      "Parentheses balanced? [OK]"
+    ],
+    "messages": [],        // length mismatches or other PDA warnings
+    "has_matches": true,
+    "match_count": 1,
+    "coverage": 1.0
+  }
+]
+```
+
+Sequences that fail PDA validation (length mismatch, invalid base pairs, etc.) populate `messages` and report `result: "Invalid"`, making it easier to display per-sequence status without parsing raw stdout.
+
 Each inline request returns the parsed results plus the automaton structure (states + transitions) for `nfa`, `dfa`, `efa`, and `pda` modes. Sample response:
 
 ```jsonc
@@ -223,4 +247,3 @@ curl "http://127.0.0.1:5000/simulate?pattern=A(CG|TT)*&sequences=ACGTACGT&sequen
 ```
 
 Your frontend can hit `/simulate` with user-selected parameters to get structured JSON data optimized for visualization, including parsed match positions, coverage metrics, and sequence information.
-
