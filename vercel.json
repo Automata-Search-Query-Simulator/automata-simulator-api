@@ -11,6 +11,10 @@
   ],
   "routes": [
     {
+      "src": "/api/debug/fs",
+      "dest": "api/debug_fs.py"
+    },
+    {
       "src": "/api/simulate",
       "dest": "api/simulate.py"
     },
