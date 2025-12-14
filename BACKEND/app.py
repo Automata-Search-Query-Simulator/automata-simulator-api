@@ -24,11 +24,14 @@ logger = get_logger()
 @app.route("/simulate", methods=["GET"])
 def simulate():
     try:
-        ensure_binary_available()
-    except BackendConfigError as exc:
-        return jsonify({"error": str(exc)}), 400
+        try:
+            ensure_binary_available()
+        except BackendConfigError as exc:
+            return jsonify({"error": str(exc)}), 400
+        except Exception as exc:
+            return jsonify({"error": "Binary check failed", "message": str(exc), "type": type(exc).__name__}), 500
 
-    # Extract parameters from query string
+        # Extract parameters from query string
     # For input_path, manually parse from raw query string to preserve '+' characters
     # Flask's args.get() uses unquote_plus() which converts '+' to spaces
     input_path_value = None
@@ -194,7 +197,22 @@ def simulate():
             os.unlink(automaton_dump_path)
         if temp_secondary_path and os.path.exists(temp_secondary_path):
             os.unlink(temp_secondary_path)
-        return jsonify({"error": "Simulation failed", "stderr": completed.stderr}), 500
+        return jsonify({
+            "error": "Simulation failed",
+            "stderr": completed.stderr,
+            "stdout": completed.stdout[:500] if completed.stdout else "",
+            "returncode": completed.returncode,
+            "command": " ".join(cmd)
+        }), 500
+    except Exception as e:
+        # Catch any unhandled exception
+        import traceback
+        return jsonify({
+            "error": "Unhandled exception in /simulate",
+            "message": str(e),
+            "type": type(e).__name__,
+            "traceback": traceback.format_exc()
+        }), 500
 
 
 @app.route("/healthz", methods=["GET"])
